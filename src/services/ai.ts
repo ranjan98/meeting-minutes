@@ -3,15 +3,13 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-
-if (!ANTHROPIC_API_KEY) {
-  throw new Error('ANTHROPIC_API_KEY is required in .env file');
+function getAnthropicClient(): Anthropic {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new Error('ANTHROPIC_API_KEY is required in .env file');
+  }
+  return new Anthropic({ apiKey });
 }
-
-const anthropic = new Anthropic({
-  apiKey: ANTHROPIC_API_KEY,
-});
 
 export interface MeetingMinutes {
   title: string;
@@ -51,6 +49,7 @@ Format your response as JSON with this structure:
   "participants": ["person 1", "person 2"]
 }`;
 
+  const anthropic = getAnthropicClient();
   const message = await anthropic.messages.create({
     model: 'claude-3-5-sonnet-20241022',
     max_tokens: 2048,

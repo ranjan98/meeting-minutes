@@ -5,10 +5,12 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const ASSEMBLYAI_API_KEY = process.env.ASSEMBLYAI_API_KEY;
-
-if (!ASSEMBLYAI_API_KEY) {
-  throw new Error('ASSEMBLYAI_API_KEY is required in .env file');
+function getApiKey(): string {
+  const key = process.env.ASSEMBLYAI_API_KEY;
+  if (!key) {
+    throw new Error('ASSEMBLYAI_API_KEY is required in .env file');
+  }
+  return key;
 }
 
 interface TranscriptionResult {
@@ -54,7 +56,7 @@ async function uploadAudioFile(filePath: string): Promise<string> {
     fileStream,
     {
       headers: {
-        authorization: ASSEMBLYAI_API_KEY!,
+        authorization: getApiKey(),
         'content-type': 'application/octet-stream',
       },
     }
@@ -77,7 +79,7 @@ async function requestTranscription(
     },
     {
       headers: {
-        authorization: ASSEMBLYAI_API_KEY!,
+        authorization: getApiKey(),
         'content-type': 'application/json',
       },
     }
@@ -95,7 +97,7 @@ async function pollTranscription(transcriptId: string): Promise<any> {
       `https://api.assemblyai.com/v2/transcript/${transcriptId}`,
       {
         headers: {
-          authorization: ASSEMBLYAI_API_KEY!,
+          authorization: getApiKey(),
         },
       }
     );
