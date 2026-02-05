@@ -24,7 +24,7 @@ npm install -g meeting-minutes
 Or clone and run locally:
 
 ```bash
-git clone https://github.com/yourusername/meeting-minutes.git
+git clone https://github.com/ranjan98/meeting-minutes.git
 cd meeting-minutes
 npm install
 npm run build
@@ -191,7 +191,7 @@ All processing happens through encrypted API calls. No audio or transcripts are 
 Found a bug? Have a feature idea? Contributions welcome!
 
 ```bash
-git clone https://github.com/yourusername/meeting-minutes.git
+git clone https://github.com/ranjan98/meeting-minutes.git
 cd meeting-minutes
 npm install
 npm run dev transcribe test-audio.mp3
