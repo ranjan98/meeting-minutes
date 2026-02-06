@@ -2,7 +2,7 @@
   "name": "meeting-minutes",
   "version": "1.0.0",
   "description": "AI-powered meeting transcription and action item extraction CLI",
-  "main": "dist/index.js",
+  "main": "dist/cli.js",
   "bin": {
     "minutes": "./dist/cli.js"
   },
@@ -29,7 +29,6 @@
     "chalk": "^4.1.2",
     "commander": "^12.1.0",
     "dotenv": "^16.4.7",
-    "form-data": "^4.0.1",
     "ora": "^5.4.1"
   },
   "devDependencies": {

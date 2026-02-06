@@ -1,5 +1,4 @@
 import axios from 'axios';
-import FormData from 'form-data';
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 
